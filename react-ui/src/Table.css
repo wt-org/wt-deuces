@@ -1,0 +1,10 @@
+.table--inner {
+  background-color: green;
+  border-radius: 10%;
+  width: 80%;
+  border: 7px solid rgb(75, 20, 20);
+}
+
+.cards--table {
+  padding: 20px;
+}

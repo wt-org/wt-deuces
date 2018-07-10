@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import Table from './Table';
+import PlayerHand from './PlayerHand';
 
 class App extends Component {
   constructor(props) {
@@ -46,8 +47,11 @@ class App extends Component {
             ? 'Fetching message from API'
             : this.state.message}
         </p>
-        <div>
+        <div className="Table">
           <Table />
+        </div>
+        <div className="Player-hand">
+          <PlayerHand />
         </div>
       </div>
     );
