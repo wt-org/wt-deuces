@@ -13,8 +13,8 @@ class PlayerHand extends Component {
   componentDidMount() {
   }
 
-  _handleClick() {
-    console.log('card clicked')
+  _handleClick(e) {
+    console.log(`card in position ${e} clicked`)
   }
 
   render() {
@@ -31,7 +31,7 @@ class PlayerHand extends Component {
         <p>Your hand:</p>
         <Hand cards={[
           { rank: 1, suit: 0 },{rank: 2, suit: 3}
-        ]} hidden={false} style={defHandStyle} onClick={() => this._handleClick()}/>
+        ]} hidden={false} style={defHandStyle} onClick={(e) => this._handleClick(e)}/>
       </div>
     );
   }
