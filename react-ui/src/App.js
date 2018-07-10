@@ -8,7 +8,8 @@ class App extends Component {
     super(props);
     this.state = {
       message: null,
-      fetching: true
+      fetching: true,
+      tableCards: [],
     };
   }
 
@@ -33,6 +34,10 @@ class App extends Component {
       })
   }
 
+  handlePlayerPlay(cards) {
+    this.setState({tableCards: cards});
+  }
+
   render() {
     return (
       <div className="App">
@@ -48,10 +53,10 @@ class App extends Component {
             : this.state.message}
         </p>
         <div className="Table">
-          <Table />
+          <Table tableCards={this.state.tableCards}/>
         </div>
         <div className="Player-hand">
-          <PlayerHand />
+          <PlayerHand handlePlayerPlay={this.handlePlayerPlay.bind(this)}/>
         </div>
       </div>
     );
