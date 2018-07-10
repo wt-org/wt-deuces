@@ -15,10 +15,6 @@ class Table extends Component {
   componentDidMount() {
   }
 
-  _handleClick() {
-    console.log('card clicked')
-  }
-
   render() {
     const defHandStyle = {
       maxHeight:'24vh',
@@ -33,7 +29,7 @@ class Table extends Component {
         <div className="cards--table">
           <Hand cards={[
             { rank: 10, suit: 1 },{rank: 11, suit: 3}
-          ]} hidden={false} style={defHandStyle} onClick={() => this._handleClick()}/>
+          ]} hidden={false} style={defHandStyle} onClick={() => null}/>
         </div>
       </div>
     );
