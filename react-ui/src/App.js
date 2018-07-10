@@ -37,13 +37,10 @@ class App extends Component {
       <div className="App">
         <div className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
+          <h2>Welcome to Deuces</h2>
         </div>
         <p className="App-intro">
-          {'This is '}
-          <a href="https://github.com/mars/heroku-cra-node">
-            {'create-react-app with a custom Node/Express server'}
-          </a><br/>
+          {'This is create-react-app with a custom Node/Express server'}
         </p>
         <p className="App-intro">
           {this.state.fetching
