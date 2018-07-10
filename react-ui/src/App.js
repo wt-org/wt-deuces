@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
+import Table from './Table';
 
 class App extends Component {
   constructor(props) {
@@ -36,7 +36,6 @@ class App extends Component {
     return (
       <div className="App">
         <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
           <h2>Welcome to Deuces</h2>
         </div>
         <p className="App-intro">
@@ -47,6 +46,9 @@ class App extends Component {
             ? 'Fetching message from API'
             : this.state.message}
         </p>
+        <div>
+          <Table />
+        </div>
       </div>
     );
   }
