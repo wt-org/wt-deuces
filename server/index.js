@@ -30,6 +30,16 @@ if (cluster.isMaster) {
     res.send('{"message":"Hello from the custom server!"}');
   });
 
+
+  app.get('/game/new/:id', (req, res) => {
+    let id = req.params.id;
+    console.log(`starting new game with ${id} players`);
+    //use helper function to choose 1/3 of cards from deck to return
+    res.status(200).json({'id': id});
+  });
+
+
+
   // All remaining requests return the React app, so it can handle routing.
   app.get('*', function(request, response) {
     response.sendFile(path.resolve(__dirname, '../react-ui/build', 'index.html'));
