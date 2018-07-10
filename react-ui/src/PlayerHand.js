@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 
 import { Hand, Card, CardBack } from 'react-deck-o-cards';
 
@@ -11,8 +12,6 @@ class PlayerHand extends Component {
   }
 
   componentDidMount() {
-    //{ rank: 1, suit: 0 },{rank: 2, suit: 3}
-    //ajax call to get cards for this hand
   }
 
   _handleCardClick(e) {
@@ -21,7 +20,11 @@ class PlayerHand extends Component {
 
   _handleNewGame(e) {
     if (e.target.id === `new-game`) {
-      console.log(`new game!`)
+      //ajax call to get cards for this player
+      axios.get('/game/new/3')
+        .then((res) => console.log(`starting new game with ${res.data.id} players`))
+        .then(() => this.setState({playerCards: [{ rank: 1, suit: 0 },{rank: 2, suit: 3}]}))
+        .catch((error) => console.log('ERROR', error))
     }
   }
 

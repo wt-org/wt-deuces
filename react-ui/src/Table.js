@@ -13,7 +13,6 @@ class Table extends Component {
   }
 
   componentDidMount() {
-    // { rank: 10, suit: 1 },{rank: 11, suit: 3}
   }
 
   render() {
