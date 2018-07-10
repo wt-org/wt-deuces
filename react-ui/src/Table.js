@@ -8,7 +8,6 @@ class Table extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      tableCards: [],
     };
   }
 
@@ -16,7 +15,7 @@ class Table extends Component {
   }
 
   render() {
-    const defHandStyle = {
+    const tableHandStyle = {
       maxHeight:'24vh',
       minHeight:'24vh',
       
@@ -27,7 +26,7 @@ class Table extends Component {
     return (
       <div className="table--inner">
         <div className="cards--table">
-          <Hand cards={this.state.tableCards} hidden={false} style={defHandStyle} onClick={() => null}/>
+          <Hand cards={this.props.tableCards} hidden={false} style={tableHandStyle} onClick={() => null}/>
         </div>
       </div>
     );
