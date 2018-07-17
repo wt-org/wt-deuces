@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
+import './helpers';
+
 import { Hand, Card, CardBack } from 'react-deck-o-cards';
 
 class PlayerHand extends Component {
