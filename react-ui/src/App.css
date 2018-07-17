@@ -8,12 +8,8 @@
   color: white;
 }
 
-.App-intro {
-  font-size: large;
-}
-
-.App a {
-  color: #f60;
+.App-body {
+  padding: 20px;
 }
 
 .Table {

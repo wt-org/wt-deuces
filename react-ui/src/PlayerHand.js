@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
+import './helpers';
+
 import { Hand, Card, CardBack } from 'react-deck-o-cards';
 
 class PlayerHand extends Component {
@@ -34,8 +36,12 @@ class PlayerHand extends Component {
 
   _handlePlay(e) {
     if (e.target.id === `play-hand`) {
+      //first check if the selected hand beats the one currently on the table
+      //then remove the selected cards from the player's hand
+      //then show the selected cards on the table as done here
       this.props.handlePlayerPlay(this.state.selectedCards);
     }
+
   }
 
   render() {
