@@ -4,17 +4,17 @@ let testHand = [{rank: 2, suit: 0},{rank: 2, suit: 1},{rank: 2, suit: 2},{rank: 
 //map to these rules:   diamonds=10, clubs=11, hearts=12, spades=13
 //rank rules:  1-13, but map 1(ace)=14 and 2(deuce)=15
 
-const suitMap = {
+const SUIT_MAP = {
   0: 11,
   1: 10,
   2: 12,
   3: 13
 }
 
-function cardMapforComparison(card) {
+export function cardMapforComparison(card) {
   let {rank, suit} = card;
   let newRank = (rank === 1 || rank === 2) ? rank + 13 : rank;
-  let newSuit = suitMap[suit];
+  let newSuit = SUIT_MAP[suit];
   return {
     rank: newRank,
     suit: newSuit
@@ -37,6 +37,7 @@ export function isHigherHand(tableHand, playerHand) {
   //if 5-card hand
     //check what kind of 5 card hand
     //compare each 5 card hand
+  return 'test string'
 }
 
 function isSameAmount(hand1, hand2) {
