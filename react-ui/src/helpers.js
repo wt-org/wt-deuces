@@ -21,13 +21,15 @@ export function cardMapforComparison(card) {
   } 
 }
 
-function handMapforComparison(hand) {
+export function handMapforComparison(hand) {
   return hand.map(card => cardMapforComparison(card))
 }
 
 //this is the final function exported and used in the app to compare hands
-//input = 2 hands, output = boolean (true if playerHand trumps tableHand)
+//input = 2 hands, output = boolean (true if playerHand trumps tableHand, false if playerHand doesn't beat tableHand)
 export function isHigherHand(tableHand, playerHand) {
+  let mappedTableHand = handMapforComparison(tableHand);
+  let mappedPlayerHand = handMapforComparison(playerHand);
   //check that hands are the same amount of cards
   //if one-card hand
     //compare that card
