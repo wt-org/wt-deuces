@@ -40,7 +40,8 @@ export function isHigherHand(tableHand, playerHand) {
   return 'test string'
 }
 
-function isSameAmount(hand1, hand2) {
+export function isSameAmount(hand1, hand2) {
+  //TODO: must be 1, 2, or 5
   return hand1.length === hand2.length;
 }
 
