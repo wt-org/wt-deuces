@@ -11,6 +11,9 @@ const SUIT_MAP = {
   3: 13
 }
 
+//each hand is an array
+//each card is an object within that array
+
 export function cardMapforComparison(card) {
   let {rank, suit} = card;
   let newRank = (rank === 1 || rank === 2) ? rank + 13 : rank;
