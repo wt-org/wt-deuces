@@ -6,11 +6,11 @@ it('loads helper test file', () => {
 
 //end to end tests
 it('should use an exported function', () => {
-  expect(func.isHigherHand()).toBe('test string');
+  expect(func.isHigherHand()).toBe('test string 1');
 });
 
 //helper function tests
-it('should use an exported function', () => {
+it('should return true or false', () => {
   expect(func.cardMapforComparison({rank: 2, suit: 0})).toEqual({rank: 15, suit: 11});
 });
 
