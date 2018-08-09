@@ -42,7 +42,7 @@ export function isHigherHand(tableHand, playerHand) {
   //if 5-card hand
     //check what kind of 5 card hand
     //compare each 5 card hand
-  return 'test string'
+  return true
 }
 
 export function isSameAmount(hand1, hand2) {

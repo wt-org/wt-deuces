@@ -2,9 +2,19 @@ import React, { Component } from 'react';
 import Table from './Table';
 import PlayerHand from './PlayerHand';
 import './board.css';
+import PropTypes from 'prop-types';
 
 
 class Board extends Component {
+  static propTypes = {
+    G: PropTypes.any.isRequired,
+    ctx: PropTypes.any.isRequired,
+    moves: PropTypes.any.isRequired,
+    playerID: PropTypes.string,
+    isActive: PropTypes.bool,
+    isMultiplayer: PropTypes.bool,
+  };
+  
   constructor(props) {
     super(props);
     this.state = {
@@ -21,11 +31,11 @@ class Board extends Component {
 
   render() {
     return (
-      <div className="App">
-        <div className="App-header">
+      <div className="board">
+        <div className="board-header">
           <h2>Welcome to Deuces</h2>
         </div>
-        <div className="App-body">
+        <div className="board-body">
           <div className="Table">
             <Table tableCards={this.state.tableCards}/>
           </div>

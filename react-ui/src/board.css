@@ -1,14 +1,14 @@
-.App {
+.board {
   text-align: center;
 }
 
-.App-header {
+.board-header {
   background-color: #222;
   padding: 20px;
   color: white;
 }
 
-.App-body {
+.board-body {
   padding: 20px;
 }
 
