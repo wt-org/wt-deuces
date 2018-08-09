@@ -44,6 +44,12 @@ class PlayerHand extends Component {
 
   }
 
+  _handlePass(e) {
+    if (e.target.id === `pass`) {
+      this.props.handlePass();
+    }
+  }
+
   render() {
     const defHandStyle = {
       maxHeight:'34vh',
@@ -75,10 +81,13 @@ class PlayerHand extends Component {
       currentHand = <button id="new-game" onClick={(e) => this._handleNewGame(e)}>Start a New Game!</button>
     }
 
+    let passButton = (!selectedCards.length && playerCards.length) ? <button id="pass" onClick={(e) => this._handlePass(e)}>Pass</button> : null;
     let playButton = selectedCards.length ? <button id="play-hand" onClick={(e) => this._handlePlay(e)}>Play this Hand</button> : null;
+
 
     return (
       <div>
+        {passButton}
         <div className="selected-hand">
           <Hand cards={selectedCards} hidden={false} style={selectedHandStyle} onClick={(e) => this._handleCardClick(e)}/>
           {playButton}

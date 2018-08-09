@@ -26,6 +26,10 @@ class Board extends Component {
     this.props.moves.playHand(cards);
   }
 
+  handlePass() {
+    this.props.moves.pass();
+  }
+
   render() {
     return (
       <div className="board">
@@ -37,7 +41,7 @@ class Board extends Component {
             <Table tableCards={this.props.G.tableHand}/>
           </div>
           <div className="Player-hand">
-            <PlayerHand handlePlayerPlay={this.handlePlayerPlay.bind(this)}/>
+            <PlayerHand handlePlayerPlay={this.handlePlayerPlay.bind(this)} handlePass={this.handlePass.bind(this)}/>
           </div>
         </div>
       </div>
