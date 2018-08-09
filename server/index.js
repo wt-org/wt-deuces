@@ -5,6 +5,12 @@ const numCPUs = require('os').cpus().length;
 
 const PORT = process.env.PORT || 5000;
 
+
+// const Server = require('boardgame.io/server').Server;
+// const Deuces = require('../react-ui/src/game').Deuces;
+// const server = Server({ games: [Deuces] });
+// server.run(8000);
+
 // Multi-process to utilize all CPU cores.
 if (cluster.isMaster) {
   console.error(`Node cluster master ${process.pid} is running`);
