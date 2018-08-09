@@ -5,15 +5,14 @@ const Deuces = Game({
   name: 'deuces',
 	setup: () => ({ 
 		tableHand: [],
-		//on game start, shuffle deck and deal hands out
+		//TO-DO: on game start, shuffle deck and deal hands out
 		players: {
       0: [{rank: 2, suit: 0},{rank: 2, suit: 1},{rank: 2, suit: 2},{rank: 2, suit: 3}],
       1: [{rank: 1, suit: 0},{rank: 1, suit: 1},{rank: 1, suit: 2},{rank: 1, suit: 3}],
 		},
-		//if true, player's hand doesn't have to be higher than table hand
-		hasControl: true,
+		hasControl: true, //if true, player's hand doesn't have to be higher than table hand
 	}),
-	playerView: PlayerView.STRIP_SECRETS,
+	//playerView: PlayerView.STRIP_SECRETS,
 	moves: {
 		playHand(G, ctx, playerHand){
 			if (G.hasControl || isHigherHand(G.tableHand, playerHand)) {
@@ -22,7 +21,7 @@ const Deuces = Game({
 				//TO-DO: remove cards from player's hand
 				return { ...G, tableHand, hasControl };
 			} else {
-				//TO-DO: 
+				//TO-DO: error messages 
 				alert("Hand played is lower than hand on table");
 				return { ...G };
 			}
@@ -35,7 +34,7 @@ const Deuces = Game({
 	flow: {
 		movesPerTurn: 1,
 		endGameIf:()=>{
-			//playerHand is empty
+			//TO-DO: playerHand is empty
 		}
 	}
 })
