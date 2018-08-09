@@ -1,40 +1,12 @@
-import React, { Component } from 'react';
-import './App.css';
-import Table from './Table';
-import PlayerHand from './PlayerHand';
+import { Client } from 'boardgame.io/react';
+import Deuces from './game.js';
+import Board from './board.js';
 
-class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      tableCards: [],
-    };
-  }
-
-  componentDidMount() {
-  }
-
-  handlePlayerPlay(cards) {
-    this.setState({tableCards: cards});
-  }
-
-  render() {
-    return (
-      <div className="App">
-        <div className="App-header">
-          <h2>Welcome to Deuces</h2>
-        </div>
-        <div className="App-body">
-          <div className="Table">
-            <Table tableCards={this.state.tableCards}/>
-          </div>
-          <div className="Player-hand">
-            <PlayerHand handlePlayerPlay={this.handlePlayerPlay.bind(this)}/>
-          </div>
-        </div>
-      </div>
-    );
-  }
-}
+const App = Client({
+  game: Deuces,
+  board: Board,
+  // multiplayer: { server: 'localhost:3000' },
+  // debug: false,
+});
 
 export default App;

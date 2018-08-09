@@ -9,8 +9,7 @@ class PlayerHand extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      playerCards: [],
-      selectedCards: []
+      selectedCards: [],
     };
   }
 
@@ -18,30 +17,35 @@ class PlayerHand extends Component {
   }
 
   _handleCardClick(e) {
-    var selectCard = this.state.playerCards[e];
+    var selectCard = this.props.playerCards[e];
     if (!this.state.selectedCards.includes(selectCard)) {
       this.setState({ selectedCards: [...this.state.selectedCards, selectCard] })
     }
   }
 
+  _handleCardClear(e) {
+    if (e.target.id === `clear`) {
+      this.setState({ selectedCards: []});
+    }
+  }
+
   _handleNewGame(e) {
     if (e.target.id === `new-game`) {
-      //ajax call to get cards for this player
-      axios.get('/game/new/3')
-        .then((res) => console.log(`starting new game with ${res.data.id} players`))
-        .then(() => this.setState({playerCards: [{rank: 2, suit: 0},{rank: 2, suit: 1},{rank: 2, suit: 2},{rank: 2, suit: 3}]}))
-        .catch((error) => console.log('ERROR', error))
+      //call function in game to shuffle deck and add cards to player's state
     }
   }
 
   _handlePlay(e) {
     if (e.target.id === `play-hand`) {
-      //first check if the selected hand beats the one currently on the table
-      //then remove the selected cards from the player's hand
-      //then show the selected cards on the table as done here
       this.props.handlePlayerPlay(this.state.selectedCards);
     }
 
+  }
+
+  _handlePass(e) {
+    if (e.target.id === `pass`) {
+      this.props.handlePass();
+    }
   }
 
   render() {
@@ -61,7 +65,9 @@ class PlayerHand extends Component {
       padding: 0,
     };
 
-    let {playerCards, selectedCards} = this.state;
+    let {selectedCards} = this.state;
+    //make sure this component re-renders when props changes
+    let {playerCards} = this.props;
     let currentHand = null;
 
     if (playerCards.length) {
@@ -75,13 +81,23 @@ class PlayerHand extends Component {
       currentHand = <button id="new-game" onClick={(e) => this._handleNewGame(e)}>Start a New Game!</button>
     }
 
+    let passButton = (!selectedCards.length && playerCards.length) ? <button id="pass" onClick={(e) => this._handlePass(e)}>Pass</button> : null;
     let playButton = selectedCards.length ? <button id="play-hand" onClick={(e) => this._handlePlay(e)}>Play this Hand</button> : null;
+    let clearButton = selectedCards.length ? <button id="clear" onClick={(e) => this._handleCardClear(e)}>Clear Selected Hand</button> : null;
 
     return (
       <div>
+        {passButton}
+
         <div className="selected-hand">
-          <Hand cards={selectedCards} hidden={false} style={selectedHandStyle} onClick={(e) => this._handleCardClick(e)}/>
+          <Hand 
+            cards={selectedCards} 
+            hidden={false} 
+            style={selectedHandStyle} 
+            onClick={(e) => this._handleCardClick(e)}
+          />
           {playButton}
+          {clearButton}
         </div>
         <div className="current-hand">
           {currentHand}
