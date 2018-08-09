@@ -14,19 +14,16 @@ class Board extends Component {
     isActive: PropTypes.bool,
     isMultiplayer: PropTypes.bool,
   };
-  
+
   constructor(props) {
     super(props);
-    this.state = {
-      tableCards: [],
-    };
   }
 
   componentDidMount() {
   }
 
   handlePlayerPlay(cards) {
-    this.setState({tableCards: cards});
+    this.props.moves.playHand(cards);
   }
 
   render() {
@@ -37,7 +34,7 @@ class Board extends Component {
         </div>
         <div className="board-body">
           <div className="Table">
-            <Table tableCards={this.state.tableCards}/>
+            <Table tableCards={this.props.G.tableHand}/>
           </div>
           <div className="Player-hand">
             <PlayerHand handlePlayerPlay={this.handlePlayerPlay.bind(this)}/>
