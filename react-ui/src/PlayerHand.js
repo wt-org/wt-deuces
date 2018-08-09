@@ -24,6 +24,12 @@ class PlayerHand extends Component {
     }
   }
 
+  _handleCardClear(e) {
+    if (e.target.id === `clear`) {
+      this.setState({ selectedCards: []});
+    }
+  }
+
   _handleNewGame(e) {
     if (e.target.id === `new-game`) {
       //ajax call to get cards for this player
@@ -83,14 +89,16 @@ class PlayerHand extends Component {
 
     let passButton = (!selectedCards.length && playerCards.length) ? <button id="pass" onClick={(e) => this._handlePass(e)}>Pass</button> : null;
     let playButton = selectedCards.length ? <button id="play-hand" onClick={(e) => this._handlePlay(e)}>Play this Hand</button> : null;
-
+    let clearButton = selectedCards.length ? <button id="clear" onClick={(e) => this._handleCardClear(e)}>Clear Selected Hand</button> : null;
 
     return (
       <div>
         {passButton}
+
         <div className="selected-hand">
           <Hand cards={selectedCards} hidden={false} style={selectedHandStyle} onClick={(e) => this._handleCardClick(e)}/>
           {playButton}
+          {clearButton}
         </div>
         <div className="current-hand">
           {currentHand}
