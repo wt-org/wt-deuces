@@ -41,7 +41,11 @@ class Board extends Component {
             <Table tableCards={this.props.G.tableHand}/>
           </div>
           <div className="Player-hand">
-            <PlayerHand handlePlayerPlay={this.handlePlayerPlay.bind(this)} handlePass={this.handlePass.bind(this)}/>
+            <PlayerHand 
+              handlePlayerPlay={this.handlePlayerPlay.bind(this)}
+              handlePass={this.handlePass.bind(this)}
+              playerCards={this.props.G.players[this.props.playerID]}
+            />
           </div>
         </div>
       </div>

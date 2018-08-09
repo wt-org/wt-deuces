@@ -5,9 +5,10 @@ const Deuces = Game({
   name: 'deuces',
 	setup: () => ({ 
 		tableHand: [],
+		//on game start, shuffle deck and deal hands out
 		players: {
-      0: 'player 0 state',
-      1: 'player 1 state',
+      0: [{rank: 2, suit: 0},{rank: 2, suit: 1},{rank: 2, suit: 2},{rank: 2, suit: 3}],
+      1: [{rank: 1, suit: 0},{rank: 1, suit: 1},{rank: 1, suit: 2},{rank: 1, suit: 3}],
 		},
 		//if true, player's hand doesn't have to be higher than table hand
 		hasControl: true,
@@ -19,7 +20,6 @@ const Deuces = Game({
 				const tableHand = [...playerHand];
 				const hasControl = false;
 				//TO-DO: remove cards from player's hand
-				//then return new tableHand to the game table
 				return { ...G, tableHand, hasControl };
 			} else {
 				//TO-DO: 
