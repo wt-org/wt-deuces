@@ -8,7 +8,6 @@ function newDeck() {
       deck.push({rank: i, suit: j});
     }
 	}
-	console.log(deck)
   return deck;
 }
 
@@ -36,8 +35,13 @@ const Deuces = Game({
 			if (G.hasControl || isHigherHand(G.tableHand, playerHand)) {
 				const tableHand = [...playerHand];
 				const hasControl = false;
-				//TO-DO: remove cards from player's hand
-				return { ...G, tableHand, hasControl };
+				let filteredPlayerHand = [...G.players[ctx.currentPlayer]]
+				playerHand.forEach(playerCard => {
+					filteredPlayerHand = filteredPlayerHand.filter(el => (!(el.rank === playerCard.rank && el.suit === playerCard.suit)))
+				})
+				var players = {...G.players}
+				players[ctx.currentPlayer] = filteredPlayerHand;
+				return { ...G, tableHand, hasControl, players};
 			} else {
 				//TO-DO: error messages 
 				alert("Hand played is lower than hand on table");
