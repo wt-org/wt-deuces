@@ -30,7 +30,13 @@ class Board extends Component {
     this.props.moves.pass();
   }
 
+  handleStart() {
+    this.props.moves.start();
+  }
+
   render() {
+    let winner = this.props.ctx.gameover ? <div id="winner">Winner: {this.props.ctx.gameover.winner}</div> : null
+
     return (
       <div className="board">
         <div className="board-header">
@@ -38,6 +44,7 @@ class Board extends Component {
         </div>
         <div className="board-body">
           <div className="Table">
+            {winner}
             <Table tableCards={this.props.G.tableHand}/>
           </div>
           <div className="Player-hand">
@@ -45,11 +52,13 @@ class Board extends Component {
               handlePlayerPlay={this.handlePlayerPlay.bind(this)}
               handlePass={this.handlePass.bind(this)}
               playerCards={this.props.G.players[0]}
+              handleStart={this.handleStart.bind(this)}
             />
             <PlayerHand 
               handlePlayerPlay={this.handlePlayerPlay.bind(this)}
               handlePass={this.handlePass.bind(this)}
               playerCards={this.props.G.players[1]}
+              handleStart={this.handleStart.bind(this)}
             />
           </div>
         </div>

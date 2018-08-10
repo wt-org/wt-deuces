@@ -31,7 +31,7 @@ class PlayerHand extends Component {
 
   _handleNewGame(e) {
     if (e.target.id === `new-game`) {
-      //call function in game to shuffle deck and add cards to player's state
+      this.props.handleStart();
     }
   }
 
