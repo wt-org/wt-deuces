@@ -33,8 +33,10 @@ const Deuces = Game({
 	},
 	flow: {
 		movesPerTurn: 1,
-		endGameIf:()=>{
-			//TO-DO: playerHand is empty
+		endGameIf:(G, ctx)=>{
+			if (G.players[ctx.currentPlayer].length === 0) {
+				return { winner: ctx.currentPlayer };
+			}
 		}
 	}
 })

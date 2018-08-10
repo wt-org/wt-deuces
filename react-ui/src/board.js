@@ -31,6 +31,8 @@ class Board extends Component {
   }
 
   render() {
+    let winner = this.props.ctx.gameover ? <div id="winner">Winner: {this.props.ctx.gameover.winner}</div> : null
+
     return (
       <div className="board">
         <div className="board-header">
@@ -38,6 +40,7 @@ class Board extends Component {
         </div>
         <div className="board-body">
           <div className="Table">
+            {winner}
             <Table tableCards={this.props.G.tableHand}/>
           </div>
           <div className="Player-hand">
