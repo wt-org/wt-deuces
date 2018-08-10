@@ -1,19 +1,37 @@
 import { Game, PlayerView } from 'boardgame.io/core';
 import { isHigherHand } from './helpers';
 
+function newDeck() {
+  let deck = [];
+  for (var i = 1; i <= 13; i++) {
+    for (var j = 0; j <=3; j++) {
+      deck.push({rank: i, suit: j});
+    }
+	}
+	console.log(deck)
+  return deck;
+}
+
 const Deuces = Game({
   name: 'deuces',
-	setup: () => ({ 
+	setup: () => ({
 		tableHand: [],
-		//TO-DO: on game start, shuffle deck and deal hands out
 		players: {
-      0: [{rank: 2, suit: 0},{rank: 2, suit: 1},{rank: 2, suit: 2},{rank: 2, suit: 3}],
-      1: [{rank: 1, suit: 0},{rank: 1, suit: 1},{rank: 1, suit: 2},{rank: 1, suit: 3}],
+      0: [],
+      1: [],
 		},
 		hasControl: true, //if true, player's hand doesn't have to be higher than table hand
 	}),
 	//playerView: PlayerView.STRIP_SECRETS,
 	moves: {
+		start(G, ctx) {
+			const deck = ctx.random.Shuffle(newDeck())
+			const players = {
+				0: deck.slice(0, 17),
+				1: deck.slice(17, 34)
+			}
+			return {...G, players}
+		},
 		playHand(G, ctx, playerHand){
 			if (G.hasControl || isHigherHand(G.tableHand, playerHand)) {
 				const tableHand = [...playerHand];
