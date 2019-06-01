@@ -22,8 +22,8 @@ class Board extends Component {
   componentDidMount() {
   }
 
-  handlePlayerPlay(cards) {
-    this.props.moves.playHand(cards);
+  handlePlayerPlay(cards, playerId) {
+    this.props.moves.playHand(cards, playerId);
   }
 
   handlePass() {
@@ -48,13 +48,15 @@ class Board extends Component {
             <Table tableCards={this.props.G.tableHand}/>
           </div>
           <div className="Player-hand">
-            <PlayerHand 
+            <PlayerHand
+              playerId="0"
               handlePlayerPlay={this.handlePlayerPlay.bind(this)}
               handlePass={this.handlePass.bind(this)}
               playerCards={this.props.G.players[0]}
               handleStart={this.handleStart.bind(this)}
             />
-            <PlayerHand 
+            <PlayerHand
+              playerId="1"
               handlePlayerPlay={this.handlePlayerPlay.bind(this)}
               handlePass={this.handlePass.bind(this)}
               playerCards={this.props.G.players[1]}

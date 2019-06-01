@@ -1,5 +1,5 @@
 import { Game, PlayerView } from 'boardgame.io/core';
-import { isHigherHand } from './helpers';
+import { isHigherHand, isValidHand } from './helpers';
 
 function newDeck() {
   let deck = [];
@@ -31,21 +31,30 @@ const Deuces = Game({
 			}
 			return {...G, players}
 		},
-		playHand(G, ctx, playerHand){
-			if (G.hasControl || isHigherHand(G.tableHand, playerHand)) {
-				const tableHand = [...playerHand];
-				const hasControl = false;
-				let filteredPlayerHand = [...G.players[ctx.currentPlayer]]
-				playerHand.forEach(playerCard => {
-					filteredPlayerHand = filteredPlayerHand.filter(el => (!(el.rank === playerCard.rank && el.suit === playerCard.suit)))
-				})
-				var players = {...G.players}
-				players[ctx.currentPlayer] = filteredPlayerHand;
-				return { ...G, tableHand, hasControl, players};
+		playHand(G, ctx, playerHand, playerId){
+			if (playerId === ctx.currentPlayer) {
+				if (isValidHand(playerHand)) {
+					if (ctx.turn === 1 || G.hasControl || isHigherHand(G.tableHand, playerHand)) {
+						const hasControl = false
+						const tableHand = [...playerHand];
+
+						let filteredPlayerHand = [...G.players[ctx.currentPlayer]]
+						playerHand.forEach(playerCard => {
+							filteredPlayerHand = filteredPlayerHand.filter(el => (!(el.rank === playerCard.rank && el.suit === playerCard.suit)))
+						})
+						var players = {...G.players}
+						players[ctx.currentPlayer] = filteredPlayerHand;
+
+						return { ...G, tableHand, hasControl, players};
+
+					} else {
+						alert('you can\'t play that')
+					}
+				} else {
+					alert('invalid hand')
+				}
 			} else {
-				//TO-DO: error messages 
-				alert("Hand played is lower than hand on table");
-				return { ...G };
+				alert('not your turn')
 			}
 		},
 		pass(G, ctx) {

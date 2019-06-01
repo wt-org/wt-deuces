@@ -250,5 +250,7 @@ export function highestCardandRankFlush(hand) {//not done
   
 }
 
-
-
+export function isValidHand(hand) {
+  let mappedHand = handMapforComparison(hand);
+  return isSingle(mappedHand) || isPair(mappedHand) || isFiveCardHand(mappedHand)
+}

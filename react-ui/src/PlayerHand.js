@@ -37,7 +37,8 @@ class PlayerHand extends Component {
 
   _handlePlay(e) {
     if (e.target.id === `play-hand`) {
-      this.props.handlePlayerPlay(this.state.selectedCards);
+      this.props.handlePlayerPlay(this.state.selectedCards, this.props.playerId);
+      this.setState({selectedCards: []})
     }
 
   }
