@@ -86,8 +86,13 @@ class PlayerHand extends Component {
     let playButton = selectedCards.length ? <button id="play-hand" onClick={(e) => this._handlePlay(e)}>Play this Hand</button> : null;
     let clearButton = selectedCards.length ? <button id="clear" onClick={(e) => this._handleCardClear(e)}>Clear Selected Hand</button> : null;
 
+    let handStyle = this.props.isVisible ? 'visible' : 'hidden';
+    const currentHandStyle = {
+      visibility: handStyle
+    }
+
     return (
-      <div>
+      <div style={currentHandStyle}>
         {passButton}
 
         <div className="selected-hand">
