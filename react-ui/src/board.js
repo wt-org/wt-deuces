@@ -10,9 +10,6 @@ class Board extends Component {
     G: PropTypes.any.isRequired,
     ctx: PropTypes.any.isRequired,
     moves: PropTypes.any.isRequired,
-    playerID: PropTypes.string,
-    isActive: PropTypes.bool,
-    isMultiplayer: PropTypes.bool,
   };
 
   constructor(props) {
@@ -54,6 +51,7 @@ class Board extends Component {
               handlePass={this.handlePass.bind(this)}
               playerCards={this.props.G.players[0]}
               handleStart={this.handleStart.bind(this)}
+              isVisible={this.props.ctx.currentPlayer === "0"}
             />
             <PlayerHand
               playerId="1"
@@ -61,6 +59,7 @@ class Board extends Component {
               handlePass={this.handlePass.bind(this)}
               playerCards={this.props.G.players[1]}
               handleStart={this.handleStart.bind(this)}
+              isVisible={this.props.ctx.currentPlayer === "1"}
             />
           </div>
         </div>
