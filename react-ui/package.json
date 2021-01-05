@@ -6,7 +6,7 @@
     "react-scripts": "^1.1.4"
   },
   "dependencies": {
-    "axios": "^0.18.0",
+    "axios": "^0.21.1",
     "boardgame.io": "^0.25.0",
     "prop-types": "^15.6.2",
     "react": "^16.2.0",
