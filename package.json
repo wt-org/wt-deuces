@@ -15,9 +15,9 @@
     "react-ui/node_modules"
   ],
   "dependencies": {
-    "boardgame.io": "^0.25.4",
+    "boardgame.io": "^0.25.5",
     "express": "^4.16.3",
-    "socket.io": "^2.1.1"
+    "socket.io": "^2.5.0"
   },
   "repository": {
     "type": "git",
